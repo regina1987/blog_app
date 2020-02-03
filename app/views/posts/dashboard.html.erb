@@ -1,0 +1,36 @@
+<h1 class="text-center m-4 text-success">Add new post</h1>
+<div class="text-center m-4" id="create_posts">
+<h2><%=flash[:alert]%></h2>
+
+
+<div class=" m-4 p-4">
+<%= form_with(model:@post, local: true) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+ <div class="form-group">
+| <%= f.label :title %>
+  <%= f.text_field  :title,  class: "form-control" %>
+</div>
+   <div class="form-group">
+  <%= f.label :content %>
+  <%=  f.text_area  :content,  class: "form-control" %>
+  </div>
+   <div class="form-group">
+  <%= f.label :image %>
+  <%= f.text_area  :image_url,  class: "form-control" %>
+</div>
+<%= f.submit 'Guadrar', class: "btn, btn-success" %>
+  <% end %>
+  </div>
+  </div>
